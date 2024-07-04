@@ -118,3 +118,8 @@ Jenkins-terraform/.terraform.lock.hcl
 Jenkins-terraform/terraform.tfstate
 Jenkins-terraform/terraform.tfstate.backup
 Jenkins-terraform/terraform.tfvars
+Eks-terraform/.terraform
+Eks-terraform/.terraform.lock.hcl
+Eks-terraform/terraform.tfstate
+Eks-terraform/terraform.tfstate.backup
+Eks-terraform/terraform.tfvars
