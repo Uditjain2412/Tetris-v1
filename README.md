@@ -6,8 +6,8 @@ Tetris game built with React
   <img alt="React tetris " title="#React tetris desktop" src="./images/game.jpg" />
 </h1>
 
+Use Sonarqube block
 
-Use Sonarqube block 
 ```
 environment {
         SCANNER_HOME=tool 'sonar-scanner'
@@ -21,9 +21,10 @@ stage("Sonarqube Analysis "){
                 }
             }
         }
-```        
+```
 
 Owasp block
+
 ```
 stage('OWASP FS SCAN') {
             steps {
@@ -34,17 +35,19 @@ stage('OWASP FS SCAN') {
 ```
 
 # ARGO CD SETUP
+
 https://archive.eksworkshop.com/intermediate/290_argocd/install/
 
 # Image updater stage
+
 ```
  environment {
     GIT_REPO_NAME = "Tetris-manifest"
-    GIT_USER_NAME = "Aj7Ay"
+    GIT_USER_NAME = "Uditjain2412"
   }
     stage('Checkout Code') {
       steps {
-        git branch: 'main', url: 'https://github.com/Aj7Ay/Tetris-manifest.git'
+        git branch: 'main', url: 'https://github.com/Uditjain2412/Tetris-manifest.git'
       }
     }
 
@@ -53,7 +56,7 @@ https://archive.eksworkshop.com/intermediate/290_argocd/install/
         script {
           withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
             // Determine the image name dynamically based on your versioning strategy
-            NEW_IMAGE_NAME = "sevenajay/tetris77:latest"
+            NEW_IMAGE_NAME = "uditjain2402/tetris:latest"
 
             // Replace the image name in the deployment.yaml file
             sh "sed -i 's|image: .*|image: $NEW_IMAGE_NAME|' deployment.yml"
