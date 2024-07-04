@@ -32,6 +32,7 @@ resource "aws_security_group" "Jenkins-sg" {
 
   ingress = [
     for port in [22, 80, 443, 8080, 9000, 3000] : {
+      description      = ""
       from_port        = port
       to_port          = port
       protocol         = "tcp"
