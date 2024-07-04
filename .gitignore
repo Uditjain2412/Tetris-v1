@@ -112,3 +112,9 @@ dist
 
 #Mac
 .DS_Store
+
+Jenkins-terraform/.terraform
+Jenkins-terraform/.terraform.lock.hcl
+Jenkins-terraform/terraform.tfstate
+Jenkins-terraform/terraform.tfstate.backup
+Jenkins-terraform/terraform.tfvars

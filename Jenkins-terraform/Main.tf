@@ -26,15 +26,12 @@ resource "aws_iam_instance_profile" "example_profile" {
   role = aws_iam_role.example_role.name
 }
 
-
 resource "aws_security_group" "Jenkins-sg" {
   name        = "Jenkins-Security Group"
-  description = "Open 22,443,80,8080,9000"
+  description = "Open 22, 443, 80, 8080, 9000"
 
-  # Define a single ingress rule to allow traffic on all specified ports
   ingress = [
     for port in [22, 80, 443, 8080, 9000, 3000] : {
-      description      = "TLS from VPC"
       from_port        = port
       to_port          = port
       protocol         = "tcp"
@@ -54,23 +51,22 @@ resource "aws_security_group" "Jenkins-sg" {
   }
 
   tags = {
-    Name = "Jenkins-sg"
+    Name = "Jenkins-SG"
   }
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0df4b2961410d4cff"
-  instance_type          = "t2.medium"
-  key_name               = "purplehaze"
+  ami                    = "ami-0ad21ae1d0696ad58"
+  instance_type          = "t2.large"
+  key_name               = "TetrisProject"
   vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
   user_data              = templatefile("./install_jenkins.sh", {})
   iam_instance_profile   = aws_iam_instance_profile.example_profile.name
 
   tags = {
-    Name = "Jenkins-argo"
+    Name = "Jenkins"
   }
 
   root_block_device {
     volume_size = 30
   }
-}
