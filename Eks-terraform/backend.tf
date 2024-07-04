@@ -25,9 +25,9 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
 terraform {
   backend "s3" {
-    bucket   = "myeksterraformbucket"
-    key      = "terraform.tfstate"
-    region   = "ap-south-1"
+    bucket         = "myeksterraformbucket"
+    key            = "terraform.tfstate"
+    region         = "ap-south-1"
     dynamodb_table = "myeks_tf_lockid"
 
     skip_region_validation      = true
